@@ -89,14 +89,12 @@ public class GenerateNutchSiteXML
 
 				+ "<property>\n"
 				+ "<name>fetcher.threads.per.queue</name>\n"
-				+ "<value>"
-				+ threadsPerQueue
-				+ "</value>\n"
+				+ "<value>" + threadsPerQueue + "</value>\n"
 				+ "</property>\n"
 
 				+ "<property>\n"
 				+ "<name>plugin.folders</name>\n"
-				+ "<value>/home/seed/workspace/Crawler/plugins</value>\n"
+				+ "<value>./plugins</value>\n"
 				+ "</property>\n"
 
 				+ "<property>\n"
@@ -111,9 +109,7 @@ public class GenerateNutchSiteXML
 
 				+ "<property>\n"
 				+ "<name>generate.batch.id</name>\n"
-				+ "<value>"
-				+ WebCrawler.batchID
-				+ "</value>\n"
+				+ "<value>" + WebCrawler.batchID + "</value>\n"
 				+ "</property>\n"
 
 				// refetch every 24 hours

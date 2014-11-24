@@ -38,7 +38,7 @@
 </property>
 <property>
 <name>fetcher.threads.fetch</name>
-<value>1</value>
+<value>2</value>
 </property>
 <property>
 <name>fetcher.threads.per.queue</name>
@@ -46,7 +46,7 @@
 </property>
 <property>
 <name>plugin.folders</name>
-<value>/home/seed/workspace/Crawler/plugins</value>
+<value>./plugins</value>
 </property>
 <property>
 <name>plugin.includes</name>
@@ -58,7 +58,7 @@
 </property>
 <property>
 <name>generate.batch.id</name>
-<value>1416769232-1640331184</value>
+<value>1416872116-905690859</value>
 </property>
 <property>
 <name>db.fetch.interval.default</name>

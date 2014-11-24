@@ -36,6 +36,8 @@ public class WebCrawler
 	private int threadsPerFetch = 2;
 	private int threadsPerQueue = 1;
 	private int maxPagesToCrawl = 2000;
+	private long startingTime;
+	private String elapsedTime;
 
 	// AnalyzeFetchingStatus will figure out data about the status
 	// of the crawl job, calculate any necessary values, and feed them
@@ -250,6 +252,25 @@ public class WebCrawler
 	{
 		return crawlSpeedPPM;
 	}
+	
+	public String getElapsedTime()
+	{
+		long hours;
+		long minutes;
+		long seconds;
+		
+		// calculate elapsed time in milliseconds
+		long elapsedTime = System.currentTimeMillis() - startingTime;
+		
+		// convert milliseconds to hours, minutes, seconds
+		hours = elapsedTime / (60*60*1000);
+		elapsedTime = elapsedTime - hours*60*60*1000;
+		minutes = elapsedTime / (60*1000);
+		elapsedTime = elapsedTime - minutes*60*1000;
+		seconds = elapsedTime / 1000;
+		
+		return hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+	}
 
 	/**
 	 * Generate a random batch id for the job. Have to do this manually because
@@ -312,6 +333,8 @@ public class WebCrawler
 	{
 		try 
 		{
+			startingTime = System.currentTimeMillis();
+			
 			// first try to inject the seed urls
 			Path urlPath = new Path("urls/seed.txt");
 			InjectorJob i = new InjectorJob();

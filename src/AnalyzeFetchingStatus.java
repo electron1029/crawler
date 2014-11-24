@@ -96,7 +96,8 @@ public class AnalyzeFetchingStatus extends Thread
 					// we have to output using err since we are using System.out to 
 					// hold nutch logging output for parsing
 					System.err.print("Progress: " + w.getPercentageCrawled());
-					System.err.println(" Speed: " + w.getCrawlSpeedPPM() + " pages/min");
+					System.err.print(" Speed: " + w.getCrawlSpeedPPM() + " pages/min");
+					System.err.println(" Elapsed time: " + w.getElapsedTime());
 					
 					// update the status variables for next time
 					lastUpdatePagesCrawled = pagesCrawled;
