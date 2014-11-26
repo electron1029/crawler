@@ -38,7 +38,7 @@
 </property>
 <property>
 <name>fetcher.threads.fetch</name>
-<value>2</value>
+<value>1</value>
 </property>
 <property>
 <name>fetcher.threads.per.queue</name>
@@ -58,7 +58,7 @@
 </property>
 <property>
 <name>generate.batch.id</name>
-<value>1416872116-905690859</value>
+<value>1416986959-1331883327</value>
 </property>
 <property>
 <name>db.fetch.interval.default</name>

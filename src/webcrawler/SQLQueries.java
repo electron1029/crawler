@@ -1,3 +1,5 @@
+package webcrawler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,9 +114,7 @@ public class SQLQueries
 					+ mysqlServer + "\r\n"
 					+ "3. Please ensure MySql is setup to use InnoDB.\r\n"
 					+ "4. If the Mysql account you are logging in with does not have creation priviledges, the " 
-					+ "nutch.webpage database will need to be created manually.\r\n\r\n"
-					+ "Exiting..."));
-			e.printStackTrace();
+					+ "nutch.webpage database will need to be created manually."));
 			System.exit(0);
 		}
 	}
@@ -165,10 +165,10 @@ public class SQLQueries
 			}
 		} catch (SQLException e) 
 		{
-			e.printStackTrace();
+			System.err.println("Error running getUrlStatus query.");
 		} catch (IOException e) 
 		{
-			System.err.println("Error parsing database information.\n");
+			System.err.println("Error parsing database information.");
 		}
 
 		return results;

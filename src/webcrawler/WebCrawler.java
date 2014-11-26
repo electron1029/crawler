@@ -1,3 +1,5 @@
+package webcrawler;
+
 import java.util.Random;
 import org.apache.gora.store.DataStore;
 import org.apache.hadoop.conf.Configuration;
@@ -15,7 +17,7 @@ import org.apache.nutch.storage.WebPage;
  * Main class of the Web Crawler. Coordinates all functionality and
  * performs the bulk of the function calls to the Nutch API.
  */
-public class WebCrawler 
+public class WebCrawler extends Thread
 {
 	// variables needed for setting up the configuration used by Nutch jobs
 	private Configuration config;
@@ -130,7 +132,6 @@ public class WebCrawler
 			sqlQueries = new SQLQueries(mysqlUsername, mysqlPassword, mysqlServerLocation);
 		} catch (Exception e) 
 		{
-			e.printStackTrace();
 			return;
 		}
 	}
@@ -212,7 +213,7 @@ public class WebCrawler
 
 	public void setMaxPagesToCrawl(String maxPagesToCrawl) 
 	{
-		this.maxPagesToCrawl = Integer.parseInt(maxPagesToCrawl) * numUrls;
+		this.maxPagesToCrawl = Integer.parseInt(maxPagesToCrawl);
 	}
 
 	public int getMaxPagesToCrawl() 
@@ -326,6 +327,11 @@ public class WebCrawler
 		return conf;
 	}
 
+	public void run()
+	{
+		crawl();
+	}
+	
 	/**
 	 * Main crawl method
 	 */
@@ -387,7 +393,7 @@ public class WebCrawler
 			sqlQueries.deleteUnparsedRows();
 		} catch (Exception e) 
 		{
-			e.printStackTrace();
+			System.err.println("Error during crawl!");
 		}
 	}
 }

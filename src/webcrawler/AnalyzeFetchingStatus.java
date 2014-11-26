@@ -1,3 +1,7 @@
+package webcrawler;
+
+import javagui.resources.Main;
+
 /**
  * Class that calculates fetching progress based on
  * Nutch output information.
@@ -71,8 +75,8 @@ public class AnalyzeFetchingStatus extends Thread
 			{
 				// look in the nutch output data for the line we are interested in.
 				// this line contains all data we need for the calculations required.
-				String output = ((i = MyCrawler.b.toString().indexOf(
-						"spinwaiting/active")) != -1) ? MyCrawler.b.toString()
+				String output = ((i = Main.b.toString().indexOf(
+						"spinwaiting/active")) != -1) ? Main.b.toString()
 						.substring(i) : "";
 
 				// if we found the data then parse it and make calculations
@@ -105,7 +109,7 @@ public class AnalyzeFetchingStatus extends Thread
 				}
 
 				// reset the output thread and sleep for a bit to help efficiency
-				MyCrawler.b.reset();
+				Main.b.reset();
 				Thread.sleep(5);
 			} catch (InterruptedException e) 
 			{
