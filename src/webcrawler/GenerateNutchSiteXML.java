@@ -74,19 +74,15 @@ public class GenerateNutchSiteXML
 				+ "<value>true</value>\n" + "</property>\n"
 
 				+ "<property>\n" + "<name>generate.max.count</name>\n"
-				+ "<value>250</value>\n" + "</property>\n"
+				+ "<value>500</value>\n" + "</property>\n"
 
 				+ "<property>\n" + "<name>fetcher.threads.per.host</name>\n"
-				+ "<value>"
-				+ threadsPerHost
-				+ "</value>\n"
+				+ "<value>" + threadsPerHost + "</value>\n"
 				+ "</property>\n"
 
 				+ "<property>\n"
 				+ "<name>fetcher.threads.fetch</name>\n"
-				+ "<value>"
-				+ threadsPerFetch
-				+ "</value>\n"
+				+ "<value>" + threadsPerFetch + "</value>\n"
 				+ "</property>\n"
 
 				+ "<property>\n"

@@ -1,5 +1,7 @@
 package webcrawler;
 
+import java.util.ArrayList;
+
 import javagui.resources.Main;
 
 /**
@@ -63,7 +65,7 @@ public class AnalyzeFetchingStatus extends Thread
 	public void run() 
 	{
 		// variables
-		int i = 0;
+		int i = 0, j = 0;
 		int pagesCrawledSinceUpdate = 0;
 		int errorsSinceUpdate = 0;
 
@@ -73,17 +75,31 @@ public class AnalyzeFetchingStatus extends Thread
 		{
 			try 
 			{
-				// look in the nutch output data for the line we are interested in.
+				// look in the nutch output data for the line swe are interested in.
+				
 				// this line contains all data we need for the calculations required.
-				String output = ((i = Main.b.toString().indexOf(
+				String spinWaitingOutput = ((i = Main.b.toString().indexOf(
 						"spinwaiting/active")) != -1) ? Main.b.toString()
 						.substring(i) : "";
-
+					
+				// this line contains the url being fetched		
+				String fetchingOutput = ((i = Main.b.toString().indexOf(
+								"fetching")) != -1) ? Main.b.toString()
+								.substring(i) : "";
+								
+				// this line contains the url with an error
+				String fetchingErrorOutput = ((i = Main.b.toString().indexOf(
+						"failed with")) != -1) ? Main.b.toString()
+						.substring(i) : "";
+	
+				// reset the output
+				Main.b.reset();		
+						
 				// if we found the data then parse it and make calculations
-				if (!output.equals("")) 
+				if (!spinWaitingOutput.equals("")) 
 				{
 					// split the string we found
-					String[] tokens = output.split(",*\\s+");
+					String[] tokens = spinWaitingOutput.split(",*\\s+");
 
 					// calculations from parsed data
 					pagesCrawled = Integer.parseInt(tokens[1]);
@@ -95,21 +111,29 @@ public class AnalyzeFetchingStatus extends Thread
 					// set the calculated data for access in the actual webcrawler thread
 					w.setCrawlSpeedPPM(crawlSpeedPPM);
 					w.incrementTotalPagesCrawled(pagesCrawledSinceUpdate - errorsSinceUpdate);
-				
-					// output to the console the progress and crawl speed
-					// we have to output using err since we are using System.out to 
-					// hold nutch logging output for parsing
-					System.err.print("Progress: " + w.getPercentageCrawled());
-					System.err.print(" Speed: " + w.getCrawlSpeedPPM() + " pages/min");
-					System.err.println(" Elapsed time: " + w.getElapsedTime());
 					
 					// update the status variables for next time
 					lastUpdatePagesCrawled = pagesCrawled;
 					lastUpdateErrors = crawlerErrors;
 				}
+				
+				// if we see a url being fetched then save the data
+				if (!fetchingOutput.equals(""))
+				{
+					String[] tokens = fetchingOutput.split(",*\\s+");
+					
+					w.setCrawledUrls(tokens[1]);
+				}
+				
+				// if we see a fetching error save the data
+				if (!fetchingErrorOutput.equals("")) 
+				{
+					String[] tokens = fetchingOutput.split(",*\\s+");
+					
+					w.setUnsuccessfulUrls(tokens[2]);
+				}
 
-				// reset the output thread and sleep for a bit to help efficiency
-				Main.b.reset();
+				// sleep for a bit to help efficiency
 				Thread.sleep(5);
 			} catch (InterruptedException e) 
 			{

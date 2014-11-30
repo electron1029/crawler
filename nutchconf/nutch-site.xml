@@ -30,7 +30,7 @@
 </property>
 <property>
 <name>generate.max.count</name>
-<value>250</value>
+<value>500</value>
 </property>
 <property>
 <name>fetcher.threads.per.host</name>
@@ -58,7 +58,7 @@
 </property>
 <property>
 <name>generate.batch.id</name>
-<value>1416986959-1331883327</value>
+<value>1417332847-772227954</value>
 </property>
 <property>
 <name>db.fetch.interval.default</name>

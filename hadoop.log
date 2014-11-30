@@ -1,142 +1,172 @@
-2014-11-26 02:29:20,840 WARN  util.NativeCodeLoader - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-2014-11-26 02:29:20,845 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
-2014-11-26 02:29:20,894 WARN  snappy.LoadSnappy - Snappy native library not loaded
-2014-11-26 02:29:21,179 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
-2014-11-26 02:29:21,393 INFO  regex.RegexURLNormalizer - can't find rules for scope 'inject', using default
-2014-11-26 02:29:21,449 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
-2014-11-26 02:29:22,072 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
-2014-11-26 02:29:22,073 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
-2014-11-26 02:29:22,073 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
-2014-11-26 02:29:22,128 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
-2014-11-26 02:29:22,222 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
-2014-11-26 02:29:22,415 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
-2014-11-26 02:29:22,415 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
-2014-11-26 02:29:22,415 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
-2014-11-26 02:29:25,973 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
-2014-11-26 02:29:26,106 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
-2014-11-26 02:29:26,184 INFO  fetcher.FetcherJob - FetcherJob: starting
-2014-11-26 02:29:26,185 INFO  fetcher.FetcherJob - FetcherJob: batchId: 1416986959-1331883327
-2014-11-26 02:29:26,186 INFO  fetcher.FetcherJob - FetcherJob: threads: 1
-2014-11-26 02:29:26,186 INFO  fetcher.FetcherJob - FetcherJob: parsing: true
-2014-11-26 02:29:26,188 INFO  fetcher.FetcherJob - FetcherJob: resuming: true
-2014-11-26 02:29:26,188 INFO  fetcher.FetcherJob - FetcherJob : timelimit set for : -1
-2014-11-26 02:29:26,489 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.proxy.host = null
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.proxy.port = 8080
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.timeout = 10000
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.content.limit = 65536
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
-2014-11-26 02:29:26,567 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.proxy.host = null
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.proxy.port = 8080
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.timeout = 10000
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.content.limit = 65536
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
-2014-11-26 02:29:26,571 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-2014-11-26 02:29:26,587 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
-2014-11-26 02:29:26,648 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
-2014-11-26 02:29:30,700 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
-2014-11-26 02:29:30,701 INFO  fetcher.FetcherJob - Using queue mode : byHost
-2014-11-26 02:29:30,733 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
-2014-11-26 02:29:30,779 INFO  fetcher.FetcherJob - Fetcher: threads: 1
-2014-11-26 02:29:30,785 INFO  fetcher.FetcherJob - Fetcher: throughput threshold: -1
-2014-11-26 02:29:30,786 INFO  fetcher.FetcherJob - Fetcher: throughput threshold sequence: 5
-2014-11-26 02:29:30,790 INFO  fetcher.FetcherJob - fetching http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/heart-failure (queue crawl delay=5000ms)
-2014-11-26 02:29:30,795 INFO  fetcher.FetcherJob - QueueFeeder finished: total 5 records. Hit by time limit :0
-2014-11-26 02:29:30,799 INFO  httpclient.Http - http.proxy.host = null
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.proxy.port = 8080
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.timeout = 10000
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.content.limit = 65536
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
-2014-11-26 02:29:30,800 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-2014-11-26 02:29:34,265 INFO  regex.RegexURLNormalizer - can't find rules for scope 'outlink', using default
-2014-11-26 02:29:35,786 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 1 pages, 0 errors, 0.2 0 pages/s, 52 52 kb/s, 4 URLs in 1 queues
-2014-11-26 02:29:35,787 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:29:35,787 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:29:35,788 INFO  fetcher.FetcherJob -   inProgress    = 0
-2014-11-26 02:29:35,790 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:29:35,790 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:29:35,790 INFO  fetcher.FetcherJob -   nextFetchTime = 1416986979043
-2014-11-26 02:29:35,791 INFO  fetcher.FetcherJob -   now           = 1416986975791
-2014-11-26 02:29:35,791 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/carotid-stenting-mortality-rate
-2014-11-26 02:29:35,791 INFO  fetcher.FetcherJob -   1. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/inpatient-pneumonia
-2014-11-26 02:29:35,791 INFO  fetcher.FetcherJob -   2. http://www.mayoclinic.org/
-2014-11-26 02:29:35,792 INFO  fetcher.FetcherJob -   3. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:29:39,348 INFO  fetcher.FetcherJob - fetching http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/carotid-stenting-mortality-rate (queue crawl delay=5000ms)
-2014-11-26 02:29:40,800 INFO  fetcher.FetcherJob - 0/1 spinwaiting/active, 1 pages, 0 errors, 0.1 0 pages/s, 26 0 kb/s, 3 URLs in 1 queues
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   inProgress    = 1
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   nextFetchTime = 1416986979043
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   now           = 1416986980801
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/inpatient-pneumonia
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   1. http://www.mayoclinic.org/
-2014-11-26 02:29:40,801 INFO  fetcher.FetcherJob -   2. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:29:45,804 INFO  fetcher.FetcherJob - 0/1 spinwaiting/active, 1 pages, 0 errors, 0.1 0 pages/s, 17 0 kb/s, 3 URLs in 1 queues
-2014-11-26 02:29:45,804 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:29:45,804 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:29:45,804 INFO  fetcher.FetcherJob -   inProgress    = 1
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   nextFetchTime = 1416986979043
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   now           = 1416986985805
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/inpatient-pneumonia
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   1. http://www.mayoclinic.org/
-2014-11-26 02:29:45,805 INFO  fetcher.FetcherJob -   2. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:29:50,806 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 2 pages, 0 errors, 0.1 0 pages/s, 24 45 kb/s, 3 URLs in 1 queues
-2014-11-26 02:29:50,806 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:29:50,806 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   inProgress    = 0
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   nextFetchTime = 1416986991129
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   now           = 1416986990807
-2014-11-26 02:29:50,807 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/inpatient-pneumonia
-2014-11-26 02:29:50,809 INFO  fetcher.FetcherJob -   1. http://www.mayoclinic.org/
-2014-11-26 02:29:50,809 INFO  fetcher.FetcherJob -   2. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:29:51,226 INFO  fetcher.FetcherJob - fetching http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/inpatient-pneumonia (queue crawl delay=5000ms)
-2014-11-26 02:29:55,811 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 3 pages, 0 errors, 0.1 0 pages/s, 29 52 kb/s, 2 URLs in 1 queues
-2014-11-26 02:29:55,812 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:29:55,812 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:29:55,812 INFO  fetcher.FetcherJob -   inProgress    = 0
-2014-11-26 02:29:55,812 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:29:55,813 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:29:55,813 INFO  fetcher.FetcherJob -   nextFetchTime = 1416986997519
-2014-11-26 02:29:55,813 INFO  fetcher.FetcherJob -   now           = 1416986995813
-2014-11-26 02:29:55,813 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/
-2014-11-26 02:29:55,813 INFO  fetcher.FetcherJob -   1. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:29:57,596 INFO  fetcher.FetcherJob - fetching http://www.mayoclinic.org/ (queue crawl delay=5000ms)
-2014-11-26 02:30:00,814 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 4 pages, 0 errors, 0.1 0 pages/s, 32 43 kb/s, 1 URLs in 1 queues
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob - * queue: http://www.mayoclinic.org
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   maxThreads    = 1
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   inProgress    = 0
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   nextFetchTime = 1416987003030
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   now           = 1416987000815
-2014-11-26 02:30:00,815 INFO  fetcher.FetcherJob -   0. http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio
-2014-11-26 02:30:03,087 INFO  fetcher.FetcherJob - fetching http://www.mayoclinic.org/about-mayo-clinic/quality/quality-measures/mortality-ratio (queue crawl delay=5000ms)
-2014-11-26 02:30:04,490 INFO  fetcher.FetcherJob - -finishing thread FetcherThread0, activeThreads=0
-2014-11-26 02:30:05,816 INFO  fetcher.FetcherJob - 0/0 spinwaiting/active, 5 pages, 0 errors, 0.1 0 pages/s, 34 49 kb/s, 0 URLs in 0 queues
-2014-11-26 02:30:05,816 INFO  fetcher.FetcherJob - -activeThreads=0
-2014-11-26 02:30:05,877 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
-2014-11-26 02:30:06,701 INFO  fetcher.FetcherJob - FetcherJob: done
-2014-11-26 02:30:06,926 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
-2014-11-26 02:30:06,940 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
-2014-11-26 02:30:07,021 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
-2014-11-26 02:30:07,027 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
-2014-11-26 02:30:07,057 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
-2014-11-26 02:30:08,653 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
-2014-11-26 02:30:09,113 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
-2014-11-26 02:30:09,194 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
-2014-11-26 02:30:12,463 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
-2014-11-26 02:30:12,464 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
-2014-11-26 02:30:12,464 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
-2014-11-26 02:30:12,464 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
-2014-11-26 02:30:14,470 INFO  mapreduce.GoraRecordWriter - Flushing the datastore after 10000 records
-2014-11-26 02:30:31,128 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:09,089 WARN  util.NativeCodeLoader - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2014-11-30 02:34:09,094 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:09,134 WARN  snappy.LoadSnappy - Snappy native library not loaded
+2014-11-30 02:34:09,476 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:09,803 INFO  regex.RegexURLNormalizer - can't find rules for scope 'inject', using default
+2014-11-30 02:34:09,829 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:10,342 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:10,343 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:10,343 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
+2014-11-30 02:34:10,394 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:10,493 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:10,682 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:10,683 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:10,683 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
+2014-11-30 02:34:10,881 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:10,904 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:11,459 INFO  fetcher.FetcherJob - FetcherJob: starting
+2014-11-30 02:34:11,464 INFO  fetcher.FetcherJob - FetcherJob: batchId: 1417332847-772227954
+2014-11-30 02:34:11,465 INFO  fetcher.FetcherJob - FetcherJob: threads: 1
+2014-11-30 02:34:11,465 INFO  fetcher.FetcherJob - FetcherJob: parsing: true
+2014-11-30 02:34:11,466 INFO  fetcher.FetcherJob - FetcherJob: resuming: true
+2014-11-30 02:34:11,468 INFO  fetcher.FetcherJob - FetcherJob : timelimit set for : -1
+2014-11-30 02:34:12,260 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:12,346 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:12,350 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:12,367 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:12,444 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:13,306 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:13,307 INFO  fetcher.FetcherJob - Using queue mode : byHost
+2014-11-30 02:34:13,337 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:13,347 INFO  fetcher.FetcherJob - Fetcher: threads: 1
+2014-11-30 02:34:13,352 INFO  fetcher.FetcherJob - Fetcher: throughput threshold: -1
+2014-11-30 02:34:13,352 INFO  fetcher.FetcherJob - Fetcher: throughput threshold sequence: 5
+2014-11-30 02:34:13,352 INFO  fetcher.FetcherJob - QueueFeeder finished: total 1 records. Hit by time limit :0
+2014-11-30 02:34:13,355 INFO  fetcher.FetcherJob - fetching http://www.webmd.com/ (queue crawl delay=5000ms)
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:13,362 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:14,245 INFO  regex.RegexURLNormalizer - can't find rules for scope 'outlink', using default
+2014-11-30 02:34:14,354 INFO  fetcher.FetcherJob - -finishing thread FetcherThread0, activeThreads=0
+2014-11-30 02:34:18,353 INFO  fetcher.FetcherJob - 0/0 spinwaiting/active, 1 pages, 0 errors, 0.2 0 pages/s, 102 102 kb/s, 0 URLs in 0 queues
+2014-11-30 02:34:18,354 INFO  fetcher.FetcherJob - -activeThreads=0
+2014-11-30 02:34:18,401 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:18,417 INFO  fetcher.FetcherJob - FetcherJob: done
+2014-11-30 02:34:18,573 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:18,588 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:18,657 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:18,665 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:18,693 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:19,154 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:19,703 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:19,765 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:20,635 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:20,635 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:20,635 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:20,635 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
+2014-11-30 02:34:29,450 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:29,745 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:29,753 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:29,753 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
+2014-11-30 02:34:29,797 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:29,843 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:29,946 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:29,946 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:29,946 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000
+2014-11-30 02:34:31,330 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:31,386 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:31,836 INFO  fetcher.FetcherJob - FetcherJob: starting
+2014-11-30 02:34:31,839 INFO  fetcher.FetcherJob - FetcherJob: batchId: 1417332847-772227954
+2014-11-30 02:34:31,839 INFO  fetcher.FetcherJob - FetcherJob: threads: 1
+2014-11-30 02:34:31,839 INFO  fetcher.FetcherJob - FetcherJob: parsing: true
+2014-11-30 02:34:31,839 INFO  fetcher.FetcherJob - FetcherJob: resuming: true
+2014-11-30 02:34:31,840 INFO  fetcher.FetcherJob - FetcherJob : timelimit set for : -1
+2014-11-30 02:34:31,980 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:31,985 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:31,986 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:31,987 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:32,001 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:32,046 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:32,995 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:32,995 INFO  fetcher.FetcherJob - Using queue mode : byHost
+2014-11-30 02:34:33,025 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:33,039 INFO  fetcher.FetcherJob - Fetcher: threads: 1
+2014-11-30 02:34:33,041 INFO  fetcher.FetcherJob - Fetcher: throughput threshold: -1
+2014-11-30 02:34:33,041 INFO  fetcher.FetcherJob - Fetcher: throughput threshold sequence: 5
+2014-11-30 02:34:33,046 INFO  fetcher.FetcherJob - fetching http://www.cdc.gov/24-7/features/stroke/index.html?s_cid=cdc_homepage_feature_001 (queue crawl delay=5000ms)
+2014-11-30 02:34:33,048 INFO  fetcher.FetcherJob - QueueFeeder finished: total 4 records. Hit by time limit :0
+2014-11-30 02:34:33,050 INFO  httpclient.Http - http.proxy.host = null
+2014-11-30 02:34:33,050 INFO  httpclient.Http - http.proxy.port = 8080
+2014-11-30 02:34:33,051 INFO  httpclient.Http - http.timeout = 10000
+2014-11-30 02:34:33,051 INFO  httpclient.Http - http.content.limit = 65536
+2014-11-30 02:34:33,051 INFO  httpclient.Http - http.agent = My Nutch Spider/Nutch-2.2.1
+2014-11-30 02:34:33,051 INFO  httpclient.Http - http.accept.language = en-us,en-gb,en;q=0.7,*;q=0.3
+2014-11-30 02:34:33,051 INFO  httpclient.Http - http.accept = text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+2014-11-30 02:34:38,042 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 1 pages, 0 errors, 0.2 0 pages/s, 33 33 kb/s, 3 URLs in 1 queues
+2014-11-30 02:34:38,042 INFO  fetcher.FetcherJob - * queue: http://www.cdc.gov
+2014-11-30 02:34:38,042 INFO  fetcher.FetcherJob -   maxThreads    = 1
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   inProgress    = 0
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   nextFetchTime = 1417332878752
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   now           = 1417332878043
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   0. http://www.cdc.gov/24-7/CDCFastFacts.html
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   1. http://www.cdc.gov/CDCTV/SaludPregestacional_College/Mp4/SaludPregestacional_College_OC.mp4
+2014-11-30 02:34:38,043 INFO  fetcher.FetcherJob -   2. http://www.cdc.gov/CDCTV/GYN_Ihad/index.html
+2014-11-30 02:34:38,761 INFO  fetcher.FetcherJob - fetching http://www.cdc.gov/24-7/CDCFastFacts.html (queue crawl delay=5000ms)
+2014-11-30 02:34:39,300 INFO  regex.RegexURLNormalizer - can't find rules for scope 'outlink', using default
+2014-11-30 02:34:43,044 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 2 pages, 0 errors, 0.2 0 pages/s, 47 62 kb/s, 2 URLs in 1 queues
+2014-11-30 02:34:43,045 INFO  fetcher.FetcherJob - * queue: http://www.cdc.gov
+2014-11-30 02:34:43,045 INFO  fetcher.FetcherJob -   maxThreads    = 1
+2014-11-30 02:34:43,045 INFO  fetcher.FetcherJob -   inProgress    = 0
+2014-11-30 02:34:43,045 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
+2014-11-30 02:34:43,046 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
+2014-11-30 02:34:43,046 INFO  fetcher.FetcherJob -   nextFetchTime = 1417332884173
+2014-11-30 02:34:43,046 INFO  fetcher.FetcherJob -   now           = 1417332883046
+2014-11-30 02:34:43,046 INFO  fetcher.FetcherJob -   0. http://www.cdc.gov/CDCTV/SaludPregestacional_College/Mp4/SaludPregestacional_College_OC.mp4
+2014-11-30 02:34:43,046 INFO  fetcher.FetcherJob -   1. http://www.cdc.gov/CDCTV/GYN_Ihad/index.html
+2014-11-30 02:34:44,344 INFO  fetcher.FetcherJob - fetching http://www.cdc.gov/CDCTV/SaludPregestacional_College/Mp4/SaludPregestacional_College_OC.mp4 (queue crawl delay=5000ms)
+2014-11-30 02:34:48,047 INFO  fetcher.FetcherJob - 1/1 spinwaiting/active, 3 pages, 0 errors, 0.2 0 pages/s, 42 33 kb/s, 1 URLs in 1 queues
+2014-11-30 02:34:48,047 INFO  fetcher.FetcherJob - * queue: http://www.cdc.gov
+2014-11-30 02:34:48,047 INFO  fetcher.FetcherJob -   maxThreads    = 1
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   inProgress    = 0
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   crawlDelay    = 5000
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   minCrawlDelay = 0
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   nextFetchTime = 1417332889676
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   now           = 1417332888048
+2014-11-30 02:34:48,048 INFO  fetcher.FetcherJob -   0. http://www.cdc.gov/CDCTV/GYN_Ihad/index.html
+2014-11-30 02:34:49,682 INFO  fetcher.FetcherJob - fetching http://www.cdc.gov/CDCTV/GYN_Ihad/index.html (queue crawl delay=5000ms)
+2014-11-30 02:34:50,089 INFO  fetcher.FetcherJob - -finishing thread FetcherThread0, activeThreads=0
+2014-11-30 02:34:53,049 INFO  fetcher.FetcherJob - 0/0 spinwaiting/active, 4 pages, 0 errors, 0.2 0 pages/s, 54 88 kb/s, 0 URLs in 0 queues
+2014-11-30 02:34:53,049 INFO  fetcher.FetcherJob - -activeThreads=0
+2014-11-30 02:34:53,092 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:54,046 INFO  fetcher.FetcherJob - FetcherJob: done
+2014-11-30 02:34:54,318 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:54,344 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:54,458 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:54,462 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:54,488 INFO  crawl.SignatureFactory - Using Signature impl: org.apache.nutch.crawl.MD5Signature
+2014-11-30 02:34:55,019 WARN  mapred.FileOutputCommitter - Output path is null in cleanup
+2014-11-30 02:34:55,473 WARN  mapred.JobClient - Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+2014-11-30 02:34:55,531 INFO  mapreduce.GoraRecordReader - gora.buffer.read.limit = 10000
+2014-11-30 02:34:56,662 INFO  mapreduce.GoraRecordWriter - gora.buffer.write.limit = 10000
+2014-11-30 02:34:56,662 INFO  crawl.FetchScheduleFactory - Using FetchSchedule impl: org.apache.nutch.crawl.DefaultFetchSchedule
+2014-11-30 02:34:56,663 INFO  crawl.AbstractFetchSchedule - defaultInterval=86400
+2014-11-30 02:34:56,663 INFO  crawl.AbstractFetchSchedule - maxInterval=7776000

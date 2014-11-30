@@ -34,7 +34,6 @@ public class SetupMySQLStore
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
-			System.exit(1);
 		}
 	}
 
@@ -107,9 +106,7 @@ public class SetupMySQLStore
 							+ mysqlServer + "\r\n"
 							+ "3. Please ensure MySql is setup to use InnoDB.\r\n"
 							+ "4. If the Mysql account you are logging in with does not have creation priviledges, the " 
-							+ "nutch.webpage database will need to be created manually.\r\n\r\n"
-							+ "Exiting..."));
-			System.exit(0);
+							+ "nutch.webpage database will need to be created manually."));
 		}
 	}
 

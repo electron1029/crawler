@@ -7,10 +7,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import java.awt.Toolkit;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -30,8 +30,9 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-public class Main extends JFrame implements ActionListener, PropertyChangeListener {
-
+public class Main extends JFrame implements ActionListener, PropertyChangeListener 
+{
+	// GUI specific variables
 	private JPanel contentPane;
 	private JTextField textFieldSeeds;
 	private JTextField textFieldNumPagesToCrawl;
@@ -40,11 +41,16 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 	private JTextField textFieldMysqlServer;
 	private JTextField textFieldThreadsPerHost;
 	private JTextField textFieldTotalThreads;
+	private JButton crawlButton;
 	private JLabel lblPagesCrawled;
 	private JLabel lblPPM;
 	private JProgressBar crawlProgressBar;
-	private JLabel elapsedTime;
-	private JButton crawlButton;
+	private JLabel lblElapsedTime;
+	private JScrollPane urlSuccessScrollBox;
+	private JList crawledUrls;
+	private JLabel lblCrawlErrors;
+	private JScrollPane urlUnsuccessfulScrollBox;
+	private JList unsuccessfulUrls;
 	private Task task;
 
 	private WebCrawler wc;
@@ -93,64 +99,97 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 	 */
 	public Main() 
 	{
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/javagui/resources/Tulips.jpg")));
-		setTitle("My java GUI");
+		// create the main window
+		setTitle("Smart Web Crawler");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 720, 600);
+		setBounds(0, 0, 720, 720);
 
+		// add a content pane so we can attach gui elements
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240, 255, 255));
 		contentPane.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		setContentPane(contentPane);
 
+		// title of application
 		JLabel lblTitle = new JLabel("Smart Web Crawler");
 
+		// label and textbox for mysql username input
 		JLabel lblMysqlUsername = new JLabel("MySQL Username");
 		textFieldMysqlUsername = new JTextField();
 		textFieldMysqlUsername.setColumns(20);
 
+		// lable and textbox for mysql password input
 		JLabel lblMysqlPassword = new JLabel("MySQL Password");
 		textFieldMysqlPassword = new JTextField();
 		textFieldMysqlPassword.setColumns(20);
 
+		// label and textbox for mysql server input
 		JLabel lblMysqlServer = new JLabel("MySQL Server");
 		textFieldMysqlServer = new JTextField();
 		textFieldMysqlServer.setColumns(20);
 
+		// label and textbook for seed urls input
 		JLabel lblSeed = new JLabel("Seed Urls");
 		textFieldSeeds = new JTextField();
 		textFieldSeeds.setColumns(20);
 
+		// label and textbox for # parallel requests per domain input
 		JLabel lblthreadsPerHost = new JLabel("Parallel Requests Per Domain");
 		textFieldThreadsPerHost = new JTextField();
 		textFieldThreadsPerHost.setColumns(20);
 
+		// label and textbox for total # of threads input
 		JLabel lblTotalThreads = new JLabel("Max simultaneous parallel requests");
 		textFieldTotalThreads = new JTextField();
 		textFieldTotalThreads.setColumns(20);
 
+		// label and textbox for total # of pages to crawl input
 		JLabel lblNoofPagesTo = new JLabel("Number of pages to crawl");
 		textFieldNumPagesToCrawl = new JTextField();
 		textFieldNumPagesToCrawl.setColumns(20);
 
+		// button to press to start a crawl
 		crawlButton = new JButton("Crawl");
 		crawlButton.addActionListener(this);
 
+		// create progress bar
 		JLabel lblProgress = new JLabel("Overall Progress");
 		crawlProgressBar = new JProgressBar(0, 100);
 		crawlProgressBar.setValue(0);
 		crawlProgressBar.setStringPainted(true);
 		crawlProgressBar.addPropertyChangeListener("progress", this);
 
+		// display elapsed time
 		JLabel labelTime = new JLabel("ElapsedTime");
-		elapsedTime = new JLabel("0 hours, 0 minutes, 0 seconds");
+		lblElapsedTime = new JLabel("0 hours, 0 minutes, 0 seconds");
 
-		JLabel lblCrawlSpeed = new JLabel("Pages crawled per min:");
+		// display crawl speed
+		JLabel lblCrawlSpeed = new JLabel("Pages crawled per min");
 		lblPPM = new JLabel("0");
 
+		// display pages crawled so far
 		JLabel lblPagesToCrawl = new JLabel("Number of pages crawled");
 		lblPagesCrawled = new JLabel("0");
 
+		// display the urls attempted to crawl so far
+		JLabel lblUrlsCrawledSoFar = new JLabel("Urls crawled");
+		String[] initializeCrawled = new String[] {"none"};
+		crawledUrls = new JList(initializeCrawled);
+		crawledUrls.setVisibleRowCount(5);
+		urlSuccessScrollBox = new JScrollPane(crawledUrls, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		// display number of errors
+		JLabel lblPagesWithErrors = new JLabel("Crawl errors");
+		lblCrawlErrors = new JLabel("0");
+		
+		// display urls that had errors so far
+		JLabel lblUrlsErrorsSoFar = new JLabel("Urls with errors");
+		String[] initializeUncrawled = new String[] {"none"};
+		unsuccessfulUrls = new JList(initializeUncrawled);
+		unsuccessfulUrls.setVisibleRowCount(5);
+		urlUnsuccessfulScrollBox = new JScrollPane(unsuccessfulUrls, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	
+		// add all above content to the content pane
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 				gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -168,7 +207,7 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 																.addComponent(lblthreadsPerHost)
 																.addComponent(lblTotalThreads)
 																.addComponent(lblNoofPagesTo))
-																.addGap(40)
+																.addGap(20)
 																.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 																		.addComponent(textFieldMysqlUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 																		.addComponent(textFieldMysqlPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -178,33 +217,36 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 																		.addComponent(textFieldSeeds, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 																		.addComponent(textFieldNumPagesToCrawl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 																		.addGroup(gl_contentPane.createSequentialGroup()
-																				.addGap(94)
+																				.addGap(200)
 																				.addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))))
 																				.addGroup(gl_contentPane.createSequentialGroup()
 																						.addGap(262)
 																						.addComponent(crawlButton)))
 																						.addContainerGap(312, Short.MAX_VALUE))
 																						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-																								.addGap(133)
+																								.addGap(50)
 																								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 																										.addComponent(lblPagesToCrawl)
 																										.addGroup(gl_contentPane.createSequentialGroup()
 																												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 																														.addComponent(lblProgress)
 																														.addComponent(lblCrawlSpeed)
-																														.addComponent(labelTime))
+																														.addComponent(labelTime)
+																														.addComponent(lblUrlsCrawledSoFar)
+																														.addComponent(lblPagesWithErrors)
+																														.addComponent(lblUrlsErrorsSoFar))
 																														.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-																																.addGroup(gl_contentPane.createSequentialGroup()
-																																		.addGap(10)
-																																		.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-																																				.addComponent(crawlProgressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-																																				.addComponent(lblPagesCrawled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-																																				.addComponent(elapsedTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-																																				.addGap(10))
-																																				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()))
-																																						.addComponent(lblPPM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-																																						.addContainerGap(0, Short.MAX_VALUE))
-				);
+																												.addGroup(gl_contentPane.createSequentialGroup()
+																														.addGap(40)
+																														.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																																.addComponent(crawlProgressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(lblPagesCrawled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(lblElapsedTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(lblPPM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(urlSuccessScrollBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(lblCrawlErrors, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																.addComponent(urlUnsuccessfulScrollBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+																																.addContainerGap(0, Short.MAX_VALUE)))));
 		gl_contentPane.setVerticalGroup(
 				gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -253,18 +295,33 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 																						.addGap(10)
 																						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 																								.addComponent(labelTime)
-																								.addComponent(elapsedTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+																								.addComponent(lblElapsedTime, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 																								.addGap(10)
 																								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-																										.addComponent(lblPagesToCrawl)
-																										.addComponent(lblPagesCrawled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+																										.addComponent(lblCrawlSpeed)
+																										.addComponent(lblPPM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 																										.addGap(10)
 																										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-																												.addComponent(lblCrawlSpeed)
-																												.addComponent(lblPPM, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))));
+																												.addComponent(lblPagesToCrawl)
+																												.addComponent(lblPagesCrawled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+																												.addGap(10)
+																												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																														.addComponent(lblUrlsCrawledSoFar)
+																														.addComponent(urlSuccessScrollBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+																														.addGap(10)
+																														.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																																.addComponent(lblPagesWithErrors)
+																																.addComponent(lblCrawlErrors, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+																																.addGap(10)
+																																.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+																																		.addComponent(lblUrlsErrorsSoFar)
+																																		.addComponent(urlUnsuccessfulScrollBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))));
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	/**
+	 * Called when the crawl button is pressed
+	 */
 	public void actionPerformed(ActionEvent e) 
 	{
 		// get text fields
@@ -278,12 +335,12 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 
 		try 
 		{
-
+			// create the web crawler instance with the user parameters
 			wc = new WebCrawler(mysqlUsername, mysqlPassword, mysqlServer, urlSeeds, 
 					threadsPerHost, totalThreads, "-1", pagesToCrawl);
 			wc.start();
 
-
+			// start the task to pull crawl data into the UI
 			task = new Task();                
 			task.start();
 
@@ -300,6 +357,11 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 
 	}
 
+	/**
+	 * Crawled when the program throws an exception
+	 * @param parent
+	 * @param e
+	 */
 	public static void showErrorDialog(JFrame parent, Exception e) 
 	{
 		final JTextArea textArea = new JTextArea();
@@ -315,26 +377,30 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 		JOptionPane.showMessageDialog(parent, scrollPane, "An Error Has Occurred", JOptionPane.ERROR_MESSAGE);
 	}
 
+	/**
+	 * Class that updates the data in the UI in a different thread.
+	 * @author seed
+	 *
+	 */
 	private class Task extends Thread 
 	{    
 		public Task(){}
 
 		public void run()
 		{
-			while(true)
+			do
 			{
 				SwingUtilities.invokeLater(new Runnable() 
 				{
 					public void run() 
 					{
+						// update data on UI
 						crawlProgressBar.setValue((int)(wc.getPercentageCrawled() * 100));
-						elapsedTime.setText("" + wc.getElapsedTime());
+						lblElapsedTime.setText("" + wc.getElapsedTime());
 						lblPPM.setText("" + wc.getCrawlSpeedPPM());
 						lblPagesCrawled.setText("" + wc.getTotalPagesCrawled());
-						if (wc.getPercentageCrawled() == 1)
-						{
-							return;
-						}
+						crawledUrls.setListData(wc.getCrawledUrls());
+						unsuccessfulUrls.setListData(wc.getUnsuccessfulUrls());
 					}
 				});
 				try 
@@ -342,9 +408,9 @@ public class Main extends JFrame implements ActionListener, PropertyChangeListen
 					Thread.sleep(100);
 				} catch (InterruptedException e) 
 				{
-
+					return;
 				}
-			}
+			} while(crawlProgressBar.getValue() != 100);
 		}
 	}   
 }

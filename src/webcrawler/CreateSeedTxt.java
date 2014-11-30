@@ -93,7 +93,11 @@ public class CreateSeedTxt
 		// create the text to write to the file
 		for (int i = 0; i < parsedUrls.length; i++) 
 		{
-			writeUrls += parsedUrls[i] + "\n";
+			writeUrls += parsedUrls[i]; 
+				if (i != parsedUrls.length - 1)
+				{
+					writeUrls += "\n";
+				}
 		}
 
 		// convert the text to write to bytes for writing

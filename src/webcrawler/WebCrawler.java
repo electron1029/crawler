@@ -1,17 +1,21 @@
 package webcrawler;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
-import org.apache.gora.store.DataStore;
+
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.nutch.crawl.DbUpdaterJob;
 import org.apache.nutch.crawl.GeneratorJob;
 import org.apache.nutch.crawl.InjectorJob;
 import org.apache.nutch.fetcher.FetcherJob;
 import org.apache.nutch.parse.ParserJob;
-import org.apache.nutch.storage.StorageUtils;
-import org.apache.nutch.storage.WebPage;
 
 /**
  * Main class of the Web Crawler. Coordinates all functionality and
@@ -21,8 +25,6 @@ public class WebCrawler extends Thread
 {
 	// variables needed for setting up the configuration used by Nutch jobs
 	private Configuration config;
-	private FileSystem fs;
-	private DataStore<String, WebPage> webPageStore;
 
 	/******************************************************************
 	 * Important crawl values. Default values may not work for all users
@@ -39,7 +41,6 @@ public class WebCrawler extends Thread
 	private int threadsPerQueue = 1;
 	private int maxPagesToCrawl = 2000;
 	private long startingTime;
-	private String elapsedTime;
 
 	// AnalyzeFetchingStatus will figure out data about the status
 	// of the crawl job, calculate any necessary values, and feed them
@@ -49,6 +50,8 @@ public class WebCrawler extends Thread
 	private volatile int totalPagesCrawled = 0;
 	private float percentageCrawled;
 	private float crawlSpeedPPM;
+	private ArrayList<String> crawledUrls;
+	private ArrayList<String> unsuccessfulUrls;
 	
 	// The main handler for all sqlQueries
 	private SQLQueries sqlQueries;
@@ -122,11 +125,12 @@ public class WebCrawler extends Thread
 
 		try 
 		{
+			//initialize data structures
+			crawledUrls = new ArrayList<String>();
+			unsuccessfulUrls = new ArrayList<String>();
+			
 			// set up the values that Nutch needs
 			config = setUp();
-			fs = FileSystem.get(config);
-			webPageStore = StorageUtils.createWebStore(config, String.class,
-					WebPage.class);
 			
 			// connect to the database for any queries.
 			sqlQueries = new SQLQueries(mysqlUsername, mysqlPassword, mysqlServerLocation);
@@ -254,6 +258,60 @@ public class WebCrawler extends Thread
 		return crawlSpeedPPM;
 	}
 	
+	public synchronized void setCrawledUrls(String crawledUrls)
+	{
+		this.crawledUrls.add(crawledUrls);
+	}
+	
+	public synchronized String[] getCrawledUrls()
+	{
+		//turn the array list into an array of strings
+		String stringCrawledUrls[] = new String[crawledUrls.size()];
+		
+		if (crawledUrls.size() == 0)
+		{
+			return stringCrawledUrls;
+		}
+		
+		// reverse the urls so that the new ones are on top
+		Collections.reverse(crawledUrls);
+		
+		for (int i = 0; i < stringCrawledUrls.length; i++)
+		{
+			stringCrawledUrls[i] = crawledUrls.get(i).toString();
+		}
+		
+		Collections.reverse(crawledUrls);
+		return stringCrawledUrls;
+	}
+
+	public synchronized void setUnsuccessfulUrls(String unsuccessfulUrls)
+	{
+		this.unsuccessfulUrls.add(unsuccessfulUrls);
+	}
+	
+	public synchronized String[] getUnsuccessfulUrls()
+	{
+		//turn the array list into an array of strings
+		String stringUnsuccessfulUrls[] = new String[unsuccessfulUrls.size()];
+		
+		if (unsuccessfulUrls.size() == 0)
+		{
+			return stringUnsuccessfulUrls;
+		}
+		
+		// reverse the urls so the new ones are on top
+		Collections.reverse(unsuccessfulUrls);
+		
+		for (int i = 0; i < stringUnsuccessfulUrls.length; i++)
+		{
+			stringUnsuccessfulUrls[i] = unsuccessfulUrls.get(i).toString();
+		}
+		
+		Collections.reverse(unsuccessfulUrls);
+		return stringUnsuccessfulUrls;
+	}
+	
 	public String getElapsedTime()
 	{
 		long hours;
@@ -353,8 +411,8 @@ public class WebCrawler extends Thread
 			// crawls. the risk of heap space errors is reduced if the crawls are kept small
 			while (totalPagesCrawled < maxPagesToCrawl) 
 			{
-				// how many pages to fetch this round. either the remainder to fetch or 500, whatever is smallest
-				int topN = (((maxPagesToCrawl - totalPagesCrawled) <= 500) ? (maxPagesToCrawl - totalPagesCrawled) : 500);
+				// how many pages to fetch this round. either the remainder to fetch or numurls*250, whatever is smallest
+				int topN = (((maxPagesToCrawl - totalPagesCrawled) <= (numUrls * 250)) ? (maxPagesToCrawl - totalPagesCrawled) : (numUrls * 250));
 
 				// generate the topN urls
 				GeneratorJob g = new GeneratorJob();
@@ -391,9 +449,54 @@ public class WebCrawler extends Thread
 			// and performance is poor. This is likely because mysql was not a good choice of
 			// database for our needs.
 			sqlQueries.deleteUnparsedRows();
+			
+			saveLog();
 		} catch (Exception e) 
 		{
 			System.err.println("Error during crawl!");
 		}
+	}
+	
+	/**
+	 * Write a final output log with unsuccessful Urls last crawl
+	 */
+	private void saveLog()
+	{
+			// create the file in the proper location
+			FileOutputStream os = null;
+				
+			try 
+			{
+				File file = new File("crawl_errorlog_" + System.currentTimeMillis());
+				os = new FileOutputStream(file, false);
+			} catch (FileNotFoundException e) 
+			{
+				System.err.println("Error creating final output log.");
+			}
+
+			// the text to write to the file
+			String file = "";
+			file += "Urls with errors:\n";
+			for (int i = 0; i < unsuccessfulUrls.size(); i++)
+			{
+				file += unsuccessfulUrls.get(i) + "\n";
+			}
+
+			// convert the text to bytes for writing
+			byte[] fileBytes;
+			try 
+			{
+				fileBytes = file.getBytes("UTF-8");
+				// actually write the data and close the file
+				os.write(fileBytes);
+				os.close();
+			} catch (UnsupportedEncodingException e) 
+			{
+				System.err.println("Error writing final output log.");
+			} catch (IOException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
 	}
 }
